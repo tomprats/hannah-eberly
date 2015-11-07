@@ -19,6 +19,6 @@ a {
   }
 }
 
-.btn-blue {
-  @include button-variant(white, $blue, $blue);
+.btn-red {
+  @include button-variant(white, $red, $red);
 }
