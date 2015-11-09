@@ -26,8 +26,12 @@ ActiveRecord::Schema.define(version: 20151105035310) do
     t.datetime "updated_at",                          null: false
   end
 
+  add_index "groups", ["active", "rank"], name: "index_groups_on_active_and_rank", using: :btree
+  add_index "groups", ["primary_painting_id"], name: "index_groups_on_primary_painting_id", using: :btree
+  add_index "groups", ["rank"], name: "index_groups_on_rank", using: :btree
+
   create_table "paintings", force: :cascade do |t|
-    t.integer  "group_id",                    null: false
+    t.integer  "group_id"
     t.boolean  "active",      default: false, null: false
     t.integer  "rank",        default: 100,   null: false
     t.string   "image",                       null: false
@@ -36,6 +40,10 @@ ActiveRecord::Schema.define(version: 20151105035310) do
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
   end
+
+  add_index "paintings", ["active", "rank"], name: "index_paintings_on_active_and_rank", using: :btree
+  add_index "paintings", ["group_id"], name: "index_paintings_on_group_id", using: :btree
+  add_index "paintings", ["rank"], name: "index_paintings_on_rank", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.boolean  "admin",           default: false, null: false

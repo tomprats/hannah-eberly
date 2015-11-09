@@ -1,1 +1,36 @@
 .container-fluid
+  .row
+    .col-xs-12
+      .panel.panel-default
+        .panel-heading
+          %h4 New/Edit Painting
+        .panel-body
+          = render partial: "form"
+  .row
+    .col-xs-12
+      .panel.panel-default
+        .panel-heading
+          %h4 Users
+        %table.table.table-bordered.table-hover
+          %thead
+            %tr
+              %th ID
+              %th Active
+              %th Rank
+              %th Image
+              %th Name
+              %th Created At
+              %th
+          %tbody
+            - @paintings.each do |painting|
+              %tr
+                %td= painting.id
+                %td= painting.active ? "Yes" : "No"
+                %td= painting.rank
+                %td= link_to "View", painting.image.url, target: :_blank
+                %td= painting.name
+                %td= painting.created_at.strftime("%m/%d/%y %I:%M %p")
+                %td
+                  = link_to "Edit", edit_admin_painting_path(painting)
+                  &vert;
+                  = link_to "Delete", admin_painting_path(painting), method: :delete, data: { confirm: "Are you sure you want to delete #{painting.name}?" }
