@@ -5,4 +5,13 @@ Rails.application.routes.draw do
     get :contact
     get :paintings
   end
+
+  resource :session, only: [:new, :create, :destroy]
+
+  namespace :admin do
+    root "users#index"
+
+    resources :users, only: [:index, :edit, :create, :update, :destroy]
+    resources :paintings, only: [:index, :edit, :create, :update, :destroy]
+  end
 end
