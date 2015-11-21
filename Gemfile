@@ -10,6 +10,7 @@ gem "carrierwave"
 gem "mini_magick"
 gem "fog"
 
+gem "redcarpet"
 gem "haml"
 gem "uglifier"
 gem "sass-rails"

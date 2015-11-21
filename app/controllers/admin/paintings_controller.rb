@@ -2,11 +2,13 @@ class Admin::PaintingsController < AdminController
   def index
     @painting = Painting.new
     @paintings = Painting.all
+    @groups = Group.all
   end
 
   def edit
     @painting = Painting.find(params[:id])
     @paintings = Painting.all
+    @groups = Group.all
 
     render :index
   end
@@ -17,6 +19,7 @@ class Admin::PaintingsController < AdminController
       redirect_to({ action: :index }, success: "#{@painting.name} created")
     else
       @paintings = Painting.all
+      @groups = Group.all
       render :index, warning: @painting.errors.full_messages.join(", ")
     end
   end
@@ -27,6 +30,7 @@ class Admin::PaintingsController < AdminController
       redirect_to({ action: :index }, success: "#{@painting.name} updated")
     else
       @paintings = Painting.all
+      @groups = Group.all
       render :index, warning: @painting.errors.full_messages.join(", ")
     end
   end

@@ -9,6 +9,11 @@ class ApplicationController < ActionController::Base
   end
   helper_method :current_user
 
+  def pages
+    @active_pages ||= Page.active
+  end
+  helper_method :pages
+
   def not_found
     raise ActionController::RoutingError.new("Not Found")
   end

@@ -11,27 +11,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151105035310) do
+ActiveRecord::Schema.define(version: 20151121064116) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "groups", force: :cascade do |t|
-    t.integer  "primary_painting_id",                 null: false
-    t.boolean  "active",              default: false, null: false
-    t.integer  "rank",                default: 100,   null: false
-    t.string   "name",                                null: false
-    t.string   "description"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.integer  "primary_painting_id"
+    t.string   "name",                null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
   end
 
-  add_index "groups", ["active", "rank"], name: "index_groups_on_active_and_rank", using: :btree
   add_index "groups", ["primary_painting_id"], name: "index_groups_on_primary_painting_id", using: :btree
-  add_index "groups", ["rank"], name: "index_groups_on_rank", using: :btree
+
+  create_table "pages", force: :cascade do |t|
+    t.integer  "group_id"
+    t.boolean  "active",     default: false, null: false
+    t.integer  "rank",       default: 100,   null: false
+    t.string   "path",                       null: false
+    t.string   "name",                       null: false
+    t.text     "text"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "pages", ["active", "rank"], name: "index_pages_on_active_and_rank", using: :btree
+  add_index "pages", ["path"], name: "index_pages_on_path", using: :btree
+  add_index "pages", ["rank"], name: "index_pages_on_rank", using: :btree
 
   create_table "paintings", force: :cascade do |t|
-    t.integer  "group_id"
+    t.integer  "group_id",                    null: false
     t.boolean  "active",      default: false, null: false
     t.integer  "rank",        default: 100,   null: false
     t.string   "image",                       null: false
