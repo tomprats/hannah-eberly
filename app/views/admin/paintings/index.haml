@@ -27,7 +27,7 @@
               %tr
                 %td= painting.id
                 %td= painting.active ? "Yes" : "No"
-                %td= painting.group.name
+                %td= painting.group ? painting.group.name : "None"
                 %td= painting.rank
                 %td= link_to "View", painting.image.url, target: :_blank
                 %td= painting.name

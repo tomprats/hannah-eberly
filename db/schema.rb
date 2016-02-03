@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151121064116) do
+ActiveRecord::Schema.define(version: 20160203090500) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,14 +41,15 @@ ActiveRecord::Schema.define(version: 20151121064116) do
   add_index "pages", ["rank"], name: "index_pages_on_rank", using: :btree
 
   create_table "paintings", force: :cascade do |t|
-    t.integer  "group_id",                    null: false
-    t.boolean  "active",      default: false, null: false
-    t.integer  "rank",        default: 100,   null: false
-    t.string   "image",                       null: false
-    t.string   "name",                        null: false
+    t.integer  "group_id"
+    t.boolean  "active",           default: false, null: false
+    t.integer  "rank",             default: 100,   null: false
+    t.string   "image",                            null: false
+    t.string   "name",                             null: false
     t.string   "description"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.boolean  "show_on_homepage", default: false
   end
 
   add_index "paintings", ["active", "rank"], name: "index_paintings_on_active_and_rank", using: :btree

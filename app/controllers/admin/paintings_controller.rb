@@ -46,7 +46,8 @@ class Admin::PaintingsController < AdminController
     params.require(:painting).permit(
       :group_id, :active,
       :rank, :image,
-      :name, :description
+      :name, :description,
+      :show_on_homepage
     )
   end
 end
