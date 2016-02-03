@@ -3,4 +3,5 @@
     - if index != 0 && (index%4).zero?
       </div><div class="row">
     .col-sm-3.col-xs-6.spacer-top-30
-      = image_tag painting.image.thumbnail, class: "img-responsive center-block"
+      = link_to painting.image.url, class: "overlay-link", data: { image: painting.image.url } do
+        = image_tag painting.image.thumbnail, class: "img-responsive center-block"

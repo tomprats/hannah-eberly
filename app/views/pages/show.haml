@@ -4,3 +4,4 @@
     .col-md-8.col-md-offset-2
       .text-center= @html
       = render partial: "pages/paintings" if @paintings
+= render partial: "partials/overlay" if @paintings
