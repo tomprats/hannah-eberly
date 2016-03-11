@@ -4,11 +4,23 @@
     .col-md-8.col-md-offset-2
       .text-center
         = @html
-        %p
-          = link_to "mailto:HEKEberly@gmail.com", target: :_blank do
-            = fa_icon :send
-            HEKEberly@gmail.com
-        %p
-          = link_to "https://instagram.com/Hekeberlyportraits", target: :_blank do
-            = fa_icon :instagram
-            HEKEberlyPortraits
+        - if app.contact_email.present?
+          %p
+            = link_to "mailto:#{app.contact_email}", target: :_blank do
+              = fa_icon :send
+              = app.contact_email
+        - if app.twitter.present?
+          %p
+            = link_to "https://twitter.com/#{app.twitter}", target: :_blank do
+              = fa_icon :twitter
+              = app.twitter
+        - if app.facebook.present?
+          %p
+            = link_to "https://www.facebook.com/#{app.facebook}", target: :_blank do
+              = fa_icon :facebook
+              = app.facebook
+        - if app.instagram.present?
+          %p
+            = link_to "https://instagram.com/#{app.instagram}", target: :_blank do
+              = fa_icon :instagram
+              = app.instagram

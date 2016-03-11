@@ -1,0 +1,28 @@
+.container-fluid
+  .row
+    .col-xs-12
+      .panel.panel-default
+        .panel-heading
+          %h4 App
+        .panel-body
+          = render partial: "form"
+  .row
+    .col-xs-12
+      .panel.panel-default
+        .panel-heading
+          %h4 Images
+        %table.table.table-bordered.table-hover
+          %thead
+            %tr
+              %th Name
+              %th Link
+          %tbody
+            %tr
+              %td Share Image
+              %td= link_to app.share_image.url, app.share_image.url
+            %tr
+              %td Homepage Image
+              %td= link_to app.homepage_image.url, app.homepage_image.url
+            %tr
+              %td Bio Image
+              %td= link_to app.bio_image.url, app.bio_image.url

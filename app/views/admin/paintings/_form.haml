@@ -6,14 +6,6 @@
         %label
           = f.check_box :active
   .form-group
-    = f.label :show_on_homepage, "Show On Homepage?", class: "col-sm-2 control-label"
-    .col-sm-10
-      .checkbox
-        %label
-          = f.check_box :show_on_homepage
-          High Quality Images Recommended
-      %p.form-control-static Removes the current homepage image
-  .form-group
     = f.label :group_id, class: "col-sm-2 control-label"
     .col-sm-10
       = f.select :group_id, options_from_collection_for_select(@groups, :id, :name), {}, class: "form-control"

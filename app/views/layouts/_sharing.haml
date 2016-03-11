@@ -1,6 +1,6 @@
-- title = content_for(:meta_title) ? yield(:meta_title) : "Hannah Eberly"
-- description = content_for(:meta_description) ? yield(:meta_description) : "Original Artwork by Hannah Eberly"
-- image = content_for(:meta_image) ? yield(:meta_image) : asset_url("logo.jpg")
+- title = content_for(:meta_title) ? yield(:meta_title) : app.share_title
+- description = content_for(:meta_description) ? yield(:meta_description) : app.share_description
+- image = content_for(:meta_image) ? yield(:meta_image) : app.share_image.url
 - url = request.original_url
 
 %title= title
@@ -13,7 +13,8 @@
 %meta(property="og:image" content="#{image}")
 %meta(property="og:url" content="#{url}")
 %meta(name="twitter:card" content="summary")
-%meta(name="twitter:site" content="@tomprats")
+- if app.twitter.present?
+  %meta(name="twitter:site" content="@#{app.twitter}")
 %meta(name="twitter:title" content="#{title}")
 %meta(name="twitter:description" content="#{description}")
 %meta(name="twitter:image" content="#{image}")

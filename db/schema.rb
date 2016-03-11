@@ -11,10 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160203090500) do
+ActiveRecord::Schema.define(version: 20160310055500) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "apps", force: :cascade do |t|
+    t.string "share_title"
+    t.string "share_description"
+    t.string "share_image"
+    t.string "homepage_image"
+    t.string "bio_image"
+    t.string "contact_email"
+    t.string "twitter"
+    t.string "facebook"
+    t.string "instagram"
+    t.string "google_analytics_code"
+  end
 
   create_table "groups", force: :cascade do |t|
     t.integer  "primary_painting_id"
@@ -42,14 +55,13 @@ ActiveRecord::Schema.define(version: 20160203090500) do
 
   create_table "paintings", force: :cascade do |t|
     t.integer  "group_id"
-    t.boolean  "active",           default: false, null: false
-    t.integer  "rank",             default: 100,   null: false
-    t.string   "image",                            null: false
-    t.string   "name",                             null: false
+    t.boolean  "active",      default: false, null: false
+    t.integer  "rank",        default: 100,   null: false
+    t.string   "image",                       null: false
+    t.string   "name",                        null: false
     t.string   "description"
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
-    t.boolean  "show_on_homepage", default: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   add_index "paintings", ["active", "rank"], name: "index_paintings_on_active_and_rank", using: :btree
